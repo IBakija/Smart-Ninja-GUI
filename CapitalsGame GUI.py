@@ -41,9 +41,9 @@ def randomCountry():
     keys = countryCapitals.keys()
     return keys[current]
 
-drzava = randomCountry()
+country = randomCountry()
 capital = ""
-greeting = Tkinter.Label(window, text="What is the capital of %s?  " % drzava)
+greeting = Tkinter.Label(window, text="What is the capital of %s?  " % country)
 greeting.pack()
 points = 0
 
@@ -52,7 +52,7 @@ guess.pack()
 
 # Check answer
 def provjera():
-    capital = countryCapitals[drzava]
+    capital = countryCapitals[country]
     grad = guess.get()
     global points
     if grad.lower() == capital.lower():
@@ -60,7 +60,7 @@ def provjera():
         tkMessageBox.showinfo("Correct", "Congratulations!")
     else:
         points -= 1
-        tkMessageBox.showwarning("Error", "The capital of %s is %s" % (drzava, capital))
+        tkMessageBox.showwarning("Error", "The capital of %s is %s" % (country, capital))
     guess.delete(0, "end")
     new()
 
@@ -69,9 +69,9 @@ submit.pack()
 
 # New question!
 def new():
-    global drzava
-    drzava = randomCountry()
-    greeting.config(text="What is the capital of %s?  " % drzava)
+    global country
+    country = randomCountry()
+    greeting.config(text="What is the capital of %s?  " % country)
 
 another = Tkinter.Button(window, text="Another!", command=new)
 another.pack()
